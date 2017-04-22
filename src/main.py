@@ -51,6 +51,7 @@ pygame.display.flip()
 #BOUCLE INFINIE
 
 continuer = 1
+cycle = 1
 
 while continuer:
 
@@ -65,13 +66,34 @@ while continuer:
     ## cycle
     # add habitants
     if time == 180:
+        print()
+        print("cycle", cycle)
         time = 0
+        cycle += 1
+        
         ville1.addPop(1)
+        ville1.checkPop()
+        ville1.addDev()
+        
         ville2.addPop(2)
+        ville2.checkPop()
+        ville2.addDev()
+        
         ville3.addPop(3)
+        ville3.checkPop()
+        ville3.addDev()
+        
         ville4.addPop(4)
+        ville4.checkPop()
+        ville4.addDev()
+        
         ville5.addPop(5)
+        ville5.checkPop()
+        ville5.addDev()
+        
         ville6.addPop(6)
+        ville6.checkPop()
+        ville6.addDev()
         
     # resolution crise
     # add dvlp
