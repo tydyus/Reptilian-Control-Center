@@ -7,9 +7,13 @@ pygame.init()
 
 
 #Ouverture de la fenêtre Pygame
-
 fenetre = pygame.display.set_mode((854, 480))
-
+#rêgle le son
+volume = pygame.mixer.music.get_volume() 
+pygame.mixer.music.set_volume(0.5)
+#son de fond
+pygame.mixer.music.load("../sound/loop.wav")
+pygame.mixer.music.play(-1)
 
 #Chargement et collage du boitier
 fond = pygame.image.load("../img/controlCenter.png").convert_alpha()
@@ -36,6 +40,13 @@ continuer = 1
 
 while continuer:
 
+    # event de kill
     for event in pygame.event.get():
         if event.type == QUIT:
             continuer = 0
+
+    # cycle
+
+
+    # Rafraîchissement de l'écran
+    pygame.display.flip()
