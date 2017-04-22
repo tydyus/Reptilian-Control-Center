@@ -3,6 +3,8 @@ from sys import exit
 import sdl2
 import sdl2.ext
 
+RESOURCES = sdl2.ext.Resources(__file__, "../img")
+
 from rendering import TextureRenderer
 import entities
 import systems
@@ -14,9 +16,17 @@ def main():
     window.show()
 
     world = sdl2.ext.World()
-    world.add_system(TextureRenderer(window))
+    rendersystem = TextureRenderer(window)
+    world.add_system(rendersystem)
     world.add_system(systems.DevelopmentSystem())
     earth = entities.Earth(world)
+
+    factory = sdl2.ext.SpriteFactory(sdl2.ext.TEXTURE,
+                                     renderer=rendersystem)
+    sprite = factory.from_image(RESOURCES.get_path("controlCenter.png"))
+
+    control_center = entities.ControlCenter(world, sprite)
+    
 
     running = True
     while running:
