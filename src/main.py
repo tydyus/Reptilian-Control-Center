@@ -54,6 +54,8 @@ city2 = pygame.image.load("../img/city/city_2.png").convert_alpha()
 city3 = pygame.image.load("../img/city/city_3.png").convert_alpha()
 city4 = pygame.image.load("../img/city/city_4.png").convert_alpha()
 
+testR = pygame.image.load("../img/testRotate.png").convert_alpha()
+
 #creation villes
 ville1 = villes()
 ville2 = villes()
@@ -71,6 +73,7 @@ pygame.display.flip()
 
 continuer = 1
 cycle = 1
+angle = 0
 
 while continuer:
 
@@ -133,6 +136,10 @@ while continuer:
     fenetre.blit(city, (45,45))
     city = rot_center(city1, 300) #ville6
     fenetre.blit(city, (45,45))
+
+    cloud = rot_center(testR, angle) #test
+    fenetre.blit(cloud, (45,45))
+    angle += 0.4
        
     # visu boitier
     fenetre.blit(boitier, (0,0))
