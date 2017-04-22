@@ -14,8 +14,9 @@ class villes:
 
         self.dvlp = 0
         self.valeurDvlp = 100
-        self.répartition = 4 # sur 24, valeur de base: 4/24
+        self.repartition = 4 # sur 24, valeur de base: 4/24
         self.pop = 0
+        self.city = pygame.image.load("../img/city/city_0.png").convert_alpha()
 
     def addPop(self,nameville):
         
@@ -35,7 +36,19 @@ class villes:
 
     def addDev(self):
         
-        self.dvlp += (villes.dvlpCycle/24*(self.répartition))*(self.valeurDvlp/100)
-        print("gagne",(villes.dvlpCycle/24*(self.répartition))*(self.valeurDvlp/100), " a ",self.dvlp, " de dvlp.")
+        self.dvlp += (villes.dvlpCycle/24*(self.repartition))*(self.valeurDvlp/100)
+        print("gagne",(villes.dvlpCycle/24*(self.repartition))*(self.valeurDvlp/100), " a ",self.dvlp, " de dvlp.")
+
+        # changement etat de la cité
+        if self.dvlp <= 15:
+            self.city = pygame.image.load("../img/city/city_0.png").convert_alpha()
+        if self.dvlp > 15:
+            self.city = pygame.image.load("../img/city/city_1.png").convert_alpha()
+        if self.dvlp > 50:
+            self.city = pygame.image.load("../img/city/city_2.png").convert_alpha()
+        if self.dvlp > 200:
+            self.city = pygame.image.load("../img/city/city_3.png").convert_alpha()
+        if self.dvlp > 500:
+            self.city = pygame.image.load("../img/city/city_4.png").convert_alpha()
         # remise a zero pour le nouveau cycle
         self.valeurDvlp = 100

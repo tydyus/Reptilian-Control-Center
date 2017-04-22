@@ -1,13 +1,16 @@
 import pygame
 import time
 
+
 from pygame.locals import *
 from ville import *
+from inputBoitier import *
 
 
 pygame.init()
 clock = pygame.time.Clock()
 FPS = 60
+vitCycle = 60
 time = 0
 
 def rot_center(image, angle):
@@ -50,19 +53,21 @@ fenetre.blit(switch4, (0,0))
 world = pygame.image.load("../img/world.png").convert_alpha()
 fenetre.blit(world, (140,140)) #imgtaille: 100*100
 city1 = pygame.image.load("../img/city/city_1.png").convert_alpha() #imgtaille: 390*390
-city2 = pygame.image.load("../img/city/city_2.png").convert_alpha()
+city2 = pygame.image.load("../img/city/city_2.png").convert_alpha() 
 city3 = pygame.image.load("../img/city/city_3.png").convert_alpha()
 city4 = pygame.image.load("../img/city/city_4.png").convert_alpha()
-
 testR = pygame.image.load("../img/testRotate.png").convert_alpha()
 
-#creation villes
+#creation objets villes
 ville1 = villes()
 ville2 = villes()
 ville3 = villes()
 ville4 = villes()
 ville5 = villes()
 ville6 = villes()
+
+#creation objets input boitier
+rptRich = repartitionRichesse()
 
 #Rafraîchissement de l'écran
 
@@ -85,9 +90,15 @@ while continuer:
         if event.type == QUIT:
             continuer = 0
 
+
+    ## input
+    if event.type == KEYDOWN and event.key == K_SPACE: # a changé vers le clicl vers curseur
+        print("repartition de la richesse")
+        ville1.repartition, ville2.repartition, ville3.repartition, ville4.repartition, ville5.repartition, ville6.repartition, = rptRich.click()
+    
     ## cycle
     # add habitants
-    if time == 180:
+    if time == vitCycle:
         print()
         print("cycle", cycle)
         time = 0
@@ -125,16 +136,16 @@ while continuer:
     fenetre.blit(fond, (0,0))
     fenetre.blit(world, (140,140)) #imgtaille: 100*100
 
-    fenetre.blit(city1, (45,45))  #ville1
-    city = rot_center(city1, 60)  #ville2
+    fenetre.blit(ville1.city, (45,45))  #ville1
+    city = rot_center(ville2.city, 60)  #ville2
     fenetre.blit(city, (45,45))
-    city = rot_center(city1, 120) #ville3
+    city = rot_center(ville3.city, 120) #ville3
     fenetre.blit(city, (45,45))
-    city = rot_center(city1, 180) #ville4
+    city = rot_center(ville4.city, 180) #ville4
     fenetre.blit(city, (45,45))
-    city = rot_center(city1, 240) #ville5
+    city = rot_center(ville5.city, 240) #ville5
     fenetre.blit(city, (45,45))
-    city = rot_center(city1, 300) #ville6
+    city = rot_center(ville6.city, 300) #ville6
     fenetre.blit(city, (45,45))
 
     cloud = rot_center(testR, angle) #test
