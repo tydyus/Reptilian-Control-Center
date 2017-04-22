@@ -1,4 +1,10 @@
 
+* tache
+- reflechir gp
+- input à la souris
+- integrer switch
+- integrer victoire
+
 * base
 
 ** 6 villes

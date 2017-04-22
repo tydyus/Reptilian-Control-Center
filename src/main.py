@@ -35,19 +35,15 @@ pygame.mixer.music.play(-1)
 
 #Chargement et collage du boitier/fond
 fond = pygame.image.load("../img/fond.png").convert_alpha()
-fenetre.blit(fond, (0,0))
 boitier = pygame.image.load("../img/controlCenter.png").convert_alpha()
-fenetre.blit(boitier, (0,0))
 
 #Chargement et collage des inputs du boitier
 switch1 = pygame.image.load("../img/switch1OFF.png").convert_alpha()
-fenetre.blit(switch1, (0,0))
 switch2 = pygame.image.load("../img/switch2OFF.png").convert_alpha()
-fenetre.blit(switch2, (0,0))
 switch3 = pygame.image.load("../img/switch3OFF.png").convert_alpha()
-fenetre.blit(switch3, (0,0))
 switch4 = pygame.image.load("../img/switch4OFF.png").convert_alpha()
-fenetre.blit(switch4, (0,0))
+curseurM = pygame.image.load("../img/curseurMoney.png").convert_alpha()
+
 
 #creation planete/ville
 world = pygame.image.load("../img/world.png").convert_alpha()
@@ -160,6 +156,9 @@ while continuer:
     fenetre.blit(switch2, (0,0))
     fenetre.blit(switch3, (0,0))
     fenetre.blit(switch4, (0,0))
+
+    curseur = rot_center(curseurM, rptRich.angle)
+    fenetre.blit(curseur, (497,202))
     
     # Rafraîchissement de l'écran
     pygame.display.flip()

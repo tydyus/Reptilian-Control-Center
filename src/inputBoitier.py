@@ -7,12 +7,14 @@ class repartitionRichesse:
     def __init__(self):
 
         self.curseur = 1
+        self.angle = 0
 
     def click(self):
 
         self.curseur += 1
         if self.curseur == 7:
             self.curseur = 1
+        self.angle = -(self.curseur-1)*60
 
         rV1=1
         rV2=2
