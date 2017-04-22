@@ -3,7 +3,9 @@ from sys import exit
 import sdl2
 import sdl2.ext
 
-from rendering import SoftwareRenderer
+from rendering import TextureRenderer
+import entities
+import systems
 
 
 def main():
@@ -12,7 +14,9 @@ def main():
     window.show()
 
     world = sdl2.ext.World()
-    world.add_system(SoftwareRenderer(window))
+    world.add_system(TextureRenderer(window))
+    world.add_system(systems.DevelopmentSystem())
+    earth = entities.Earth(world)
 
     running = True
     while running:
@@ -22,6 +26,7 @@ def main():
                 running = False
 
         world.process()
+        print(earth.developmentfactor.value)
         
     return 0
 
