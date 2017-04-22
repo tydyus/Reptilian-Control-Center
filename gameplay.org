@@ -1,0 +1,25 @@
+
+* base
+
+** 6 villes
+*** développement
+determine comment la ville peut supporter le nombre d'habitant
+*** populations
+** 1 mondes
+*** développement
+valeur de la ville la plus developpé, à 100 depart dans l'espace.
+*** populations
+*** répartission richesse
+
+** phase de fin de cycle
+par ville:
+- + 3 habitants
+- regarde si la ville peut supportez le nombre d'habitant (devlp marge de 5)
+ - oui, etape suivante
+ - non,
+  - trop d'habitant, difference divisé par deux mort.
+  - moins, malus de 50% de gain de dev
+- gain de dev
+  de base +2, voir tableau suivant:
+
+12 de repartie dans les villes celon la repartition suivante:
