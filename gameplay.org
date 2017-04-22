@@ -29,3 +29,8 @@ par ville:
 - 1/24, 2/24, 4/24, 5/24, 5/24, 7/24
 - 1/24, 1/24, 3/24, 5/24, 6/24, 8/24
 - 1/24, 1/24, 1/24, 5/24, 7/24, 9/24
+
+
+si cycle toute les 3sec, à raison de 1dev/cycle -> 12000 cycle pour 10 min de jeu
+estimation avec les gains de dev actuel, pour 10min de jeu -> 3000 pt
+de dev demandé dans une ville pour la lune.
