@@ -10,6 +10,17 @@ clock = pygame.time.Clock()
 FPS = 60
 time = 0
 
+def rot_center(image, angle):
+    """rotate an image while keeping its center and size"""
+    orig_rect = image.get_rect()
+    rot_image = pygame.transform.rotate(image, angle)
+    rot_rect = orig_rect.copy()
+    rot_rect.center = rot_image.get_rect().center
+    rot_image = rot_image.subsurface(rot_rect).copy()
+    return rot_image
+
+
+
 #Ouverture de la fenêtre Pygame
 fenetre = pygame.display.set_mode((854, 480))
 #rêgle le son
@@ -34,6 +45,14 @@ switch3 = pygame.image.load("../img/switch3OFF.png").convert_alpha()
 fenetre.blit(switch3, (0,0))
 switch4 = pygame.image.load("../img/switch4OFF.png").convert_alpha()
 fenetre.blit(switch4, (0,0))
+
+#creation planete/ville
+world = pygame.image.load("../img/world.png").convert_alpha()
+fenetre.blit(world, (140,140)) #imgtaille: 100*100
+city1 = pygame.image.load("../img/city/city_1.png").convert_alpha() #imgtaille: 390*390
+city2 = pygame.image.load("../img/city/city_2.png").convert_alpha()
+city3 = pygame.image.load("../img/city/city_3.png").convert_alpha()
+city4 = pygame.image.load("../img/city/city_4.png").convert_alpha()
 
 #creation villes
 ville1 = villes()
@@ -101,7 +120,20 @@ while continuer:
     ## visuel départ
     # visu map
     fenetre.blit(fond, (0,0))
-    
+    fenetre.blit(world, (140,140)) #imgtaille: 100*100
+
+    fenetre.blit(city1, (45,45))  #ville1
+    city = rot_center(city1, 60)  #ville2
+    fenetre.blit(city, (45,45))
+    city = rot_center(city1, 120) #ville3
+    fenetre.blit(city, (45,45))
+    city = rot_center(city1, 180) #ville4
+    fenetre.blit(city, (45,45))
+    city = rot_center(city1, 240) #ville5
+    fenetre.blit(city, (45,45))
+    city = rot_center(city1, 300) #ville6
+    fenetre.blit(city, (45,45))
+       
     # visu boitier
     fenetre.blit(boitier, (0,0))
     
