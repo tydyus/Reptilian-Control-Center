@@ -30,7 +30,28 @@ par ville:
 - 1/24, 1/24, 3/24, 5/24, 6/24, 8/24
 - 1/24, 1/24, 1/24, 5/24, 7/24, 9/24
 
+** switch
+*** nucéaire
+- rad/cycle -> plus rad élevée plus mort/clycle
+- bonus de dev globale?
+*** soins
+- diminue les naissances
+- diminue les problemes de mort par pollution/rad
+*** -
 
-si cycle toute les 3sec, à raison de 1dev/cycle -> 12000 cycle pour 10 min de jeu
+*** -
+
+** stade ville
+- 0 
+- 50
+- 200
+- 500
+- 1000
+- 1500
+- 2000
+- 3000 -> fin/espace
+
+* reflexion globale
+Si cycle toute les 3sec, à raison de 1dev/cycle -> 12000 cycle pour 10 min de jeu
 estimation avec les gains de dev actuel, pour 10min de jeu -> 3000 pt
 de dev demandé dans une ville pour la lune.

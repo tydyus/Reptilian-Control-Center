@@ -1,44 +1,41 @@
-from sys import exit
+import pygame
 
-import sdl2
-import sdl2.ext
-
-RESOURCES = sdl2.ext.Resources(__file__, "../img")
-
-from rendering import TextureRenderer
-import entities
-import systems
+from pygame.locals import *
 
 
-def main():
-    sdl2.ext.init()
-    window = sdl2.ext.Window("Reptilian Control Center", size=(854, 480))
-    window.show()
+pygame.init()
 
-    world = sdl2.ext.World()
-    rendersystem = TextureRenderer(window)
-    world.add_system(rendersystem)
-    world.add_system(systems.DevelopmentSystem())
-    earth = entities.Earth(world)
 
-    factory = sdl2.ext.SpriteFactory(sdl2.ext.TEXTURE,
-                                     renderer=rendersystem)
-    sprite = factory.from_image(RESOURCES.get_path("controlCenter.png"))
+#Ouverture de la fenêtre Pygame
 
-    control_center = entities.ControlCenter(world, sprite)
-    
+fenetre = pygame.display.set_mode((854, 480))
 
-    running = True
-    while running:
-        events = sdl2.ext.get_events()
-        for event in events:
-            if event.type == sdl2.SDL_QUIT:
-                running = False
 
-        world.process()
-        print(earth.developmentfactor.value)
-        
-    return 0
+#Chargement et collage du boitier
+fond = pygame.image.load("../img/controlCenter.png").convert_alpha()
+fenetre.blit(fond, (0,0))
 
-if __name__ == "__main__":
-    exit(main())
+#Chargement et collage des inputs du boitier
+switch1 = pygame.image.load("../img/switch1OFF.png").convert_alpha()
+fenetre.blit(switch1, (0,0))
+switch2 = pygame.image.load("../img/switch2OFF.png").convert_alpha()
+fenetre.blit(switch2, (0,0))
+switch3 = pygame.image.load("../img/switch3OFF.png").convert_alpha()
+fenetre.blit(switch3, (0,0))
+switch4 = pygame.image.load("../img/switch4OFF.png").convert_alpha()
+fenetre.blit(switch4, (0,0))
+
+#Rafraîchissement de l'écran
+
+pygame.display.flip()
+
+
+#BOUCLE INFINIE
+
+continuer = 1
+
+while continuer:
+
+    for event in pygame.event.get():
+        if event.type == QUIT:
+            continuer = 0
