@@ -12,6 +12,7 @@ class villes:
     rad = 0 #radiation
     pol = 0 #polution
     resPol = 0 #resistance polution
+    mort = 0 #mort total
     
     def __init__(self):
 
@@ -34,8 +35,14 @@ class villes:
             print("surpopulation")
             
         if self.pop > (self.dvlp + 5):
+            villes.mort += int((self.pop - (self.dvlp + 5))//2)
             self.pop -= (self.pop - (self.dvlp + 5))//2
             print("famine")
+
+        #rad
+        self.pop -= (villes.rad//100)
+        villes.mort += int((villes.rad//100))
+        print("rad: ", villes.rad)
 
     def addDev(self):
         
@@ -72,5 +79,8 @@ class villes:
 
     def polution (self):
         lvlP = int(villes.pol//500)
+        return lvlP
+    def morts (self):
+        lvlP = int(villes.mort//200)
         return lvlP
             

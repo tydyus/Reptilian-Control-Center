@@ -57,8 +57,11 @@ par ville:
 - 1000
 - 1750
 - 3000 -> fin/espace
-
+  
 * reflexion globale
 Si cycle toute les 3sec, à raison de 1dev/cycle -> 12000 cycle pour 10 min de jeu
 estimation avec les gains de dev actuel, pour 10min de jeu -> 3000 pt
 de dev demandé dans une ville pour la lune.
+
+- travaille manuel -> moins de polution (moins de machine), plus de morts
+- recyclage -> moins de polution, moins de dev (partis du dev qui passe en recyclage)

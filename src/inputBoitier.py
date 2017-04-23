@@ -93,3 +93,11 @@ class switch:
             self.etat = 0
             self.img = self.etatOFF
             print("off")
+
+    def nuke(self):
+        rad = 0
+        if self.etat == 1:
+            rad = 1
+        return rad
+            
+    

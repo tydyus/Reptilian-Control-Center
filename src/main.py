@@ -35,6 +35,7 @@ pygame.mixer.music.play(-1)
 
 #Chargement et collage du boitier/fond
 fond = pygame.image.load("../img/fond.png").convert_alpha()
+fondE = pygame.image.load("../img/fondE.png").convert_alpha()
 boitier = pygame.image.load("../img/controlCenter.png").convert_alpha()
 
 #Chargement et collage des inputs du boitier
@@ -63,7 +64,6 @@ alimOff = pygame.image.load("../img/alimoff.png").convert_alpha()
 
 #creation planete/ville
 world = pygame.image.load("../img/world.png").convert_alpha()
-fenetre.blit(world, (140,140)) #imgtaille: 100*100
 city1 = pygame.image.load("../img/city/city_1.png").convert_alpha() #imgtaille: 390*390
 city2 = pygame.image.load("../img/city/city_2.png").convert_alpha() 
 city3 = pygame.image.load("../img/city/city_3.png").convert_alpha()
@@ -109,6 +109,8 @@ while continuer:
 
     
         ## input
+
+    
     if mousemove == 0 :
         
         #curseur richesse
@@ -116,27 +118,27 @@ while continuer:
             mousemove = 1
             print("repartition de la richesse")
             ville1.repartition, ville2.repartition, ville3.repartition, ville4.repartition, ville5.repartition, ville6.repartition, = rptRich.click()
-            #switch1
+        #switch1 nuke
         if event.type == MOUSEBUTTONUP and event.button == 1 and event.pos[0] > 598 and event.pos[1] > 200 and event.pos[0] < 638 and event.pos[1] < 280:
             mousemove = 1
             print("switch1")
             switch1.click()
-            #switch2
+        #switch2
         if event.type == MOUSEBUTTONUP and event.button == 1 and event.pos[0] > 650 and event.pos[1] > 200 and event.pos[0] < 692 and event.pos[1] < 280:
             mousemove = 1
             print("switch2")
             switch2.click()
-            #switch3
+        #switch3
         if event.type == MOUSEBUTTONUP and event.button == 1 and event.pos[0] > 704 and event.pos[1] > 200 and event.pos[0] < 744 and event.pos[1] < 280:
             mousemove = 1
             print("switch3")
             switch3.click()
-            #switch4
+        #switch4
         if event.type == MOUSEBUTTONUP and event.button == 1 and event.pos[0] > 757 and event.pos[1] > 200 and event.pos[0] < 797 and event.pos[1] < 280:
             mousemove = 1
             print("switch4")
             switch4.click()
-
+    
     #Alimentation du boitier
     if mousemove == 0 and boitierAlim == 0 and event.type == MOUSEBUTTONUP and event.button == 1 and event.pos[0] > 497 and event.pos[1] > 400 and event.pos[0] < 585 and event.pos[1] < 460:
         switch1.son.play()
@@ -179,6 +181,8 @@ while continuer:
             ville6.addDev()
         
             # resolution crise
+            villes.rad += switch1.nuke() #effets switch 1 nuke
+            
             # add dvlp
     
         ## visuel départ
@@ -202,7 +206,9 @@ while continuer:
         cloud = rot_center(testR, angle) #test
         fenetre.blit(cloud, (45,45))
         angle += 0.4
-       
+
+    if boitierAlim == 0:
+        fenetre.blit(fondE, (0,0))
     # visu boitier
     fenetre.blit(boitier, (0,0))
     
@@ -223,6 +229,8 @@ while continuer:
 
     for i in range(ville1.polution()):
         fenetre.blit(jaugeB, (516,(169-(8*(i-1)))))
+    for i in range(ville1.morts()):
+        fenetre.blit(jaugeB, (546,(169-(8*(i-1)))))
 
     
     # Rafraîchissement de l'écran
