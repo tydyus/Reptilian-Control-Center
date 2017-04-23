@@ -4,6 +4,7 @@
 - input à la souris
 - integrer switch
 - integrer victoire
+- trouver sound-input
 
 * base
 
