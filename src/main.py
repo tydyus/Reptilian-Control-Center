@@ -38,10 +38,22 @@ fond = pygame.image.load("../img/fond.png").convert_alpha()
 boitier = pygame.image.load("../img/controlCenter.png").convert_alpha()
 
 #Chargement et collage des inputs du boitier
-switch1 = pygame.image.load("../img/switch1OFF.png").convert_alpha()
-switch2 = pygame.image.load("../img/switch2OFF.png").convert_alpha()
-switch3 = pygame.image.load("../img/switch3OFF.png").convert_alpha()
-switch4 = pygame.image.load("../img/switch4OFF.png").convert_alpha()
+switch1 = switch()
+switch1.etatON = pygame.image.load("../img/switch1ON.png").convert_alpha()
+switch1.etatOFF = pygame.image.load("../img/switch1OFF.png").convert_alpha()
+switch1.img = pygame.image.load("../img/switch1OFF.png").convert_alpha()
+switch2 = switch()
+switch2.etatON = pygame.image.load("../img/switch2ON.png").convert_alpha()
+switch2.etatOFF = pygame.image.load("../img/switch2OFF.png").convert_alpha()
+switch2.img = pygame.image.load("../img/switch2OFF.png").convert_alpha()
+switch3 = switch()
+switch3.etatON = pygame.image.load("../img/switch3ON.png").convert_alpha()
+switch3.etatOFF = pygame.image.load("../img/switch3OFF.png").convert_alpha()
+switch3.img = pygame.image.load("../img/switch3OFF.png").convert_alpha()
+switch4 = switch()
+switch4.etatON = pygame.image.load("../img/switch4ON.png").convert_alpha()
+switch4.etatOFF = pygame.image.load("../img/switch4OFF.png").convert_alpha()
+switch4.img = pygame.image.load("../img/switch4OFF.png").convert_alpha()
 curseurM = pygame.image.load("../img/curseurMoney.png").convert_alpha()
 
 
@@ -91,11 +103,32 @@ while continuer:
 
     ## input
     if mousemove == 0 :
-        
+
+        #curseur richesse
         if event.type == MOUSEBUTTONUP and event.button == 1 and event.pos[0] > 497 and event.pos[1] > 202 and event.pos[0] < 590 and event.pos[1] < 275:
             mousemove = 1
             print("repartition de la richesse")
             ville1.repartition, ville2.repartition, ville3.repartition, ville4.repartition, ville5.repartition, ville6.repartition, = rptRich.click()
+        #switch1
+        if event.type == MOUSEBUTTONUP and event.button == 1 and event.pos[0] > 598 and event.pos[1] > 200 and event.pos[0] < 638 and event.pos[1] < 280:
+            mousemove = 1
+            print("switch1")
+            switch1.click()
+        #switch2
+        if event.type == MOUSEBUTTONUP and event.button == 1 and event.pos[0] > 650 and event.pos[1] > 200 and event.pos[0] < 692 and event.pos[1] < 280:
+            mousemove = 1
+            print("switch2")
+            switch2.click()
+        #switch3
+        if event.type == MOUSEBUTTONUP and event.button == 1 and event.pos[0] > 704 and event.pos[1] > 200 and event.pos[0] < 744 and event.pos[1] < 280:
+            mousemove = 1
+            print("switch3")
+            switch3.click()
+        #switch4
+        if event.type == MOUSEBUTTONUP and event.button == 1 and event.pos[0] > 757 and event.pos[1] > 200 and event.pos[0] < 797 and event.pos[1] < 280:
+            mousemove = 1
+            print("switch4")
+            switch4.click()
     
     ## cycle
     # add habitants
@@ -157,10 +190,10 @@ while continuer:
     fenetre.blit(boitier, (0,0))
     
     # visu input boitier
-    fenetre.blit(switch1, (0,0))
-    fenetre.blit(switch2, (0,0))
-    fenetre.blit(switch3, (0,0))
-    fenetre.blit(switch4, (0,0))
+    fenetre.blit(switch1.img, (0,0))
+    fenetre.blit(switch2.img, (0,0))
+    fenetre.blit(switch3.img, (0,0))
+    fenetre.blit(switch4.img, (0,0))
 
     curseur = rot_center(curseurM, rptRich.angle)
     fenetre.blit(curseur, (497,202))
