@@ -75,6 +75,7 @@ pygame.display.flip()
 continuer = 1
 cycle = 1
 angle = 0
+mousemove = 0
 
 while continuer:
 
@@ -85,12 +86,16 @@ while continuer:
     for event in pygame.event.get():
         if event.type == QUIT:
             continuer = 0
-
+    if event.type == MOUSEBUTTONDOWN:
+        mousemove = 0
 
     ## input
-    if event.type == KEYDOWN and event.key == K_SPACE: # a changé vers le clicl vers curseur
-        print("repartition de la richesse")
-        ville1.repartition, ville2.repartition, ville3.repartition, ville4.repartition, ville5.repartition, ville6.repartition, = rptRich.click()
+    if mousemove == 0 :
+        
+        if event.type == MOUSEBUTTONUP and event.button == 1 and event.pos[0] > 497 and event.pos[1] > 202 and event.pos[0] < 590 and event.pos[1] < 275:
+            mousemove = 1
+            print("repartition de la richesse")
+            ville1.repartition, ville2.repartition, ville3.repartition, ville4.repartition, ville5.repartition, ville6.repartition, = rptRich.click()
     
     ## cycle
     # add habitants
