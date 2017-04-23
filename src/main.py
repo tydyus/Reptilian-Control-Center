@@ -35,6 +35,7 @@ pygame.mixer.music.load("../sound/loop.wav")
 #Chargement et collage du boitier/fond
 fond = pygame.image.load("../img/fond.png").convert_alpha()
 fondE = pygame.image.load("../img/fondE.png").convert_alpha()
+fondW = pygame.image.load("../img/fondW.png").convert_alpha()
 boitier = pygame.image.load("../img/controlCenter.png").convert_alpha()
 
 #Chargement et collage des inputs du boitier
@@ -93,6 +94,7 @@ boitierAlim = 0
 cycle = 1
 angle = 0
 mousemove = 0
+win = 0
 
 while continuer:
 
@@ -143,12 +145,14 @@ while continuer:
         switch1.son.play()
         mousemove = 1
         boitierAlim = 1
+        win = 0
         pygame.mixer.music.play(-1)
     if boitierAlim == 1:
         
         # maj time
         time += 1
         ## cycle
+        villes.dvlp = 0
         # add habitants
         if time == vitCycle:
             print()
@@ -216,8 +220,17 @@ while continuer:
         fenetre.blit(cloud, (45,45))
         angle += 0.4
 
+        if villes.dvlp > 1500:
+            win = 1
+            
+        
+            
+        
+
     if boitierAlim == 0:
         fenetre.blit(fondE, (0,0))
+    if win == 2 and boitierAlim == 0:
+            fenetre.blit(fondW, (0,0))
     # visu boitier
     fenetre.blit(boitier, (0,0))
     
@@ -242,7 +255,7 @@ while continuer:
         fenetre.blit(jaugeB, (546,(169-(8*(i-1)))))
         
     #endGame+reset
-    if ville1.polution() > 10 or ville1.morts() > 10 or mousemove == 0 and boitierAlim == 1 and event.type == MOUSEBUTTONUP and event.button == 1 and event.pos[0] > 497 and event.pos[1] > 400 and event.pos[0] < 585 and event.pos[1] < 460:
+    if ville1.polution() > 10 or ville1.morts() > 10 or win == 1 or mousemove == 0 and boitierAlim == 1 and event.type == MOUSEBUTTONUP and event.button == 1 and event.pos[0] > 497 and event.pos[1] > 400 and event.pos[0] < 585 and event.pos[1] < 460:
         pygame.mixer.music.stop()
         mousemove = 1
         boitierAlim = 0
@@ -254,6 +267,15 @@ while continuer:
         ville4 = villes()
         ville5 = villes()
         ville6 = villes()
+        cycle = 1
+        if win == 1:
+            win = 2
+        
+        
+
+    
+
+        
 
     
     # Rafraîchissement de l'écran

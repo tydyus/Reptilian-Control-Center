@@ -79,6 +79,7 @@ class villes:
         self.dvlp += (villes.dvlpT/24*(self.repartition))*(self.valeurDvlp/100)
         villes.resPol = switch.resPol
         villes.pol += (self.dvlp/10)/((100-(villes.resPol))/100)
+        villes.dvlp += self.dvlp
 
         # changement etat de la cité
         if self.dvlp <= 10:
