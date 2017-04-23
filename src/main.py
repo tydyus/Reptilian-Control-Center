@@ -76,6 +76,7 @@ ville6 = villes()
 
 #creation objets input boitier
 rptRich = repartitionRichesse()
+ville1.repartition, ville2.repartition, ville3.repartition, ville4.repartition, ville5.repartition, ville6.repartition, = rptRich.initEtat()
 
 #Rafraîchissement de l'écran
 
@@ -170,16 +171,17 @@ while continuer:
     fenetre.blit(fond, (0,0))
     fenetre.blit(world, (140,140)) #imgtaille: 100*100
 
-    fenetre.blit(ville1.city, (45,45))  #ville1
-    city = rot_center(ville2.city, 60)  #ville2
+    city = rot_center(ville1.city, 60)  #ville1
     fenetre.blit(city, (45,45))
-    city = rot_center(ville3.city, 120) #ville3
+    city = rot_center(ville2.city, 0)   #ville2
     fenetre.blit(city, (45,45))
-    city = rot_center(ville4.city, 180) #ville4
+    city = rot_center(ville3.city, 180) #ville3
     fenetre.blit(city, (45,45))
-    city = rot_center(ville5.city, 240) #ville5
+    city = rot_center(ville4.city, 120) #ville4
     fenetre.blit(city, (45,45))
-    city = rot_center(ville6.city, 300) #ville6
+    city = rot_center(ville5.city, 300) #ville5
+    fenetre.blit(city, (45,45))
+    city = rot_center(ville6.city, 240) #ville6
     fenetre.blit(city, (45,45))
 
     cloud = rot_center(testR, angle) #test
