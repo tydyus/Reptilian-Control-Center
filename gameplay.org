@@ -65,3 +65,4 @@ de dev demandé dans une ville pour la lune.
 
 - travaille manuel -> moins de polution (moins de machine), plus de morts
 - recyclage -> moins de polution, moins de dev (partis du dev qui passe en recyclage)
+

@@ -62,12 +62,12 @@ class villes:
         
         if self.pop < (self.dvlp - 5):
             self.valeurDvlp -= 50
-            print("surpopulation")
+            #print("surpopulation")
             
         if self.pop > (self.dvlp + 5):
             villes.mort += int((self.pop - (self.dvlp + 5))//2)
             self.pop -= (self.pop - (self.dvlp + 5))//2
-            print("famine")
+            #print("famine")
 
         #rad
         self.pop -= (villes.rad//100)

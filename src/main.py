@@ -190,7 +190,7 @@ while continuer:
             ville6.addDev()
             #ville6.info()
 
-            ville1.infoW()
+            #ville1.infoW()
         
             # resolution crise
             villes.rad += switch1.nuke() #effets switch 1, rad+dev
