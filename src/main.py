@@ -31,7 +31,6 @@ volume = pygame.mixer.music.get_volume()
 pygame.mixer.music.set_volume(0.5)
 #son de fond
 pygame.mixer.music.load("../sound/loop.wav")
-pygame.mixer.music.play(-1)
 
 #Chargement et collage du boitier/fond
 fond = pygame.image.load("../img/fond.png").convert_alpha()
@@ -144,6 +143,7 @@ while continuer:
         switch1.son.play()
         mousemove = 1
         boitierAlim = 1
+        pygame.mixer.music.play(-1)
     if boitierAlim == 1:
         
         # maj time
@@ -159,29 +159,38 @@ while continuer:
             ville1.addPop(1)
             ville1.checkPop()
             ville1.addDev()
+            #ville1.info()
         
             ville2.addPop(2)
             ville2.checkPop()
             ville2.addDev()
+            #ville2.info()
         
             ville3.addPop(3)
             ville3.checkPop()
             ville3.addDev()
+            #ville3.info()
             
             ville4.addPop(4)
             ville4.checkPop()
             ville4.addDev()
+            #ville4.info()
                 
             ville5.addPop(5)
             ville5.checkPop()
             ville5.addDev()
+            #ville5.info()
                 
             ville6.addPop(6)
             ville6.checkPop()
             ville6.addDev()
+            #ville6.info()
+
+            ville1.infoW()
         
             # resolution crise
-            villes.rad += switch1.nuke() #effets switch 1 nuke
+            villes.rad += switch1.nuke() #effets switch 1, rad+dev
+            switch2.recycle() #effets switch 2, resP + -dev
             
             # add dvlp
     
@@ -231,6 +240,20 @@ while continuer:
         fenetre.blit(jaugeB, (516,(169-(8*(i-1)))))
     for i in range(ville1.morts()):
         fenetre.blit(jaugeB, (546,(169-(8*(i-1)))))
+        
+    #endGame+reset
+    if ville1.polution() > 10 or ville1.morts() > 10 or mousemove == 0 and boitierAlim == 1 and event.type == MOUSEBUTTONUP and event.button == 1 and event.pos[0] > 497 and event.pos[1] > 400 and event.pos[0] < 585 and event.pos[1] < 460:
+        pygame.mixer.music.stop()
+        mousemove = 1
+        boitierAlim = 0
+        switch1.son.play()
+        ville1.reset()
+        ville1 = villes()
+        ville2 = villes()
+        ville3 = villes()
+        ville4 = villes()
+        ville5 = villes()
+        ville6 = villes()
 
     
     # Rafraîchissement de l'écran

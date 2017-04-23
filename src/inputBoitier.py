@@ -1,6 +1,7 @@
 import pygame
 
 from pygame.locals import *
+from ville import *
 
 class repartitionRichesse:
 
@@ -72,7 +73,9 @@ class repartitionRichesse:
 
 class switch:
 
-
+    resPol = 0
+    recyDev = 0
+    dvlpNuke = 0
     
     def __init__(self):
 
@@ -95,9 +98,18 @@ class switch:
             print("off")
 
     def nuke(self):
-        rad = 0
+        rad = 0 
+        switch.dvlpNuke = 0 
         if self.etat == 1:
-            rad = 1
+            rad = 1 #radiation
+        switch.dvlpNuke = 12 #bonus de dev
         return rad
+    
+    def recycle(self):
+        switch.resPol = 0
+        switch.recyDev = 0
+        if self.etat == 1:
+            switch.resPol = 50
+            switch.recyDev = -6
             
     
