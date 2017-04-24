@@ -110,8 +110,11 @@ class villes:
 
     def polution (self):
         lvlP = int(villes.pol//1000)
+        #print(lvlP)
         return lvlP
     def morts (self):
         lvlP = int(villes.mort//200)
+        #print(lvlP)
         return lvlP
+    
             

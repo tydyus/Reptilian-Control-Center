@@ -113,3 +113,11 @@ class switch:
             switch.recyDev = -6
             
     
+class slides():
+
+    slide = 0
+    slider = 0
+
+    def __init__(self):
+
+        self.xCurseur = 0

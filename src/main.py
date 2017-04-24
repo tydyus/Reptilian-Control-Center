@@ -10,7 +10,7 @@ from inputBoitier import *
 pygame.init()
 clock = pygame.time.Clock()
 FPS = 60
-vitCycle = 20
+vitCycle = 20 # base: 20
 time = 0
 
 def rot_center(image, angle):
@@ -57,7 +57,14 @@ switch4.etatOFF = pygame.image.load("../img/switch4OFF.png").convert_alpha()
 switch4.img = pygame.image.load("../img/switch4OFF.png").convert_alpha()
 curseurM = pygame.image.load("../img/curseurMoney.png").convert_alpha()
 jaugeB = pygame.image.load("../img/jaugeB.png").convert_alpha()
+jaugeJ = pygame.image.load("../img/jaugeJ.png").convert_alpha()
+jaugeR = pygame.image.load("../img/jaugeR.png").convert_alpha()
 alimOn = pygame.image.load("../img/alimon.png").convert_alpha()
+sSoins = slides()
+sRichesse = slides()
+sTest = slides()
+slides.slide = pygame.image.load("../img/slide.png").convert_alpha()
+slides.slider = pygame.image.load("../img/slider.png").convert_alpha()
 alimOff = pygame.image.load("../img/alimoff.png").convert_alpha()
         
 
@@ -139,6 +146,15 @@ while continuer:
             mousemove = 1
             print("switch4")
             switch4.click()
+        #slide soins
+        if event.type == MOUSEBUTTONDOWN and event.pos[0] > 602 and event.pos[1] > 103 and event.pos[0] < 797 and event.pos[1] < 114:
+            sSoins.xCurseur = (event.pos[0] - 612)
+        #slide richesse
+        if event.type == MOUSEBUTTONDOWN and event.pos[0] > 602 and event.pos[1] > 133 and event.pos[0] < 797 and event.pos[1] < 144:
+            sRichesse.xCurseur = (event.pos[0] - 612)
+        #slide test
+        if event.type == MOUSEBUTTONDOWN and event.pos[0] > 602 and event.pos[1] > 163 and event.pos[0] < 797 and event.pos[1] < 174:
+            sTest.xCurseur = (event.pos[0] - 612)
     
     #Alimentation du boitier
     if mousemove == 0 and boitierAlim == 0 and event.type == MOUSEBUTTONUP and event.button == 1 and event.pos[0] > 497 and event.pos[1] > 400 and event.pos[0] < 585 and event.pos[1] < 460:
@@ -190,7 +206,7 @@ while continuer:
             ville6.addDev()
             #ville6.info()
 
-            #ville1.infoW()
+            ville1.infoW()
         
             # resolution crise
             villes.rad += switch1.nuke() #effets switch 1, rad+dev
@@ -220,7 +236,7 @@ while continuer:
         fenetre.blit(cloud, (45,45))
         angle += 0.4
 
-        if villes.dvlp > 1500:
+        if villes.dvlp > 2000:
             win = 1
             
         
@@ -244,15 +260,32 @@ while continuer:
     fenetre.blit(switch3.img, (0,0))
     fenetre.blit(switch4.img, (0,0))
 
+    fenetre.blit(slides.slide, (600,103))
+    fenetre.blit(slides.slider, ((602 + sSoins.xCurseur),103))
+    fenetre.blit(slides.slide, (600,133))
+    fenetre.blit(slides.slider, ((602 + sRichesse.xCurseur),133))
+    fenetre.blit(slides.slide, (600,163))
+    fenetre.blit(slides.slider, ((602 + sTest.xCurseur),163))
+
     curseur = rot_center(curseurM, rptRich.angle)
     fenetre.blit(curseur, (497,202))
 
     # visu graph boitier
 
     for i in range(ville1.polution()):
-        fenetre.blit(jaugeB, (516,(169-(8*(i-1)))))
+        if i < 3:
+            fenetre.blit(jaugeB, (516,(169-(8*(i-1)))))
+        if i > 2 and i < 6:
+            fenetre.blit(jaugeJ, (516,(169-(8*(i-1)))))
+        if i > 5:
+            fenetre.blit(jaugeR, (516,(169-(8*(i-1)))))
     for i in range(ville1.morts()):
-        fenetre.blit(jaugeB, (546,(169-(8*(i-1)))))
+        if i < 3:
+            fenetre.blit(jaugeB, (546,(169-(8*(i-1)))))
+        if i > 2 and i < 6:
+            fenetre.blit(jaugeJ, (546,(169-(8*(i-1)))))
+        if i > 5:
+            fenetre.blit(jaugeR, (546,(169-(8*(i-1)))))
         
     #endGame+reset
     if ville1.polution() > 10 or ville1.morts() > 10 or win == 1 or mousemove == 0 and boitierAlim == 1 and event.type == MOUSEBUTTONUP and event.button == 1 and event.pos[0] > 497 and event.pos[1] > 400 and event.pos[0] < 585 and event.pos[1] < 460:
