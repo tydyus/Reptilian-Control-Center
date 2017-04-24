@@ -104,7 +104,7 @@ class villes:
             self.city = pygame.image.load("../img/city/city_9.png").convert_alpha()
         if self.dvlp > 1400:
             self.city = pygame.image.load("../img/city/city_10.png").convert_alpha()
-        # remise a zero pour le nouveau cycle
+        # remise a zero pour le nouveau  cycle
         self.valeurDvlp = 100
 
 
