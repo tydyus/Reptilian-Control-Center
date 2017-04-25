@@ -1,8 +1,13 @@
+try:
+    import pygame_sdl2
+    pygame_sdl2.import_as_pygame()
+except ImportError:
+    pass
+
 import pygame
-import time
-
-
 from pygame.locals import *
+
+import time
 from ville import *
 from inputBoitier import *
 
@@ -24,58 +29,58 @@ def rot_center(image, angle):
 
 
 
-#Ouverture de la fenêtre Pygame
+#Ouverture de la fenetre Pygame
 fenetre = pygame.display.set_mode((854, 480))
-#rêgle le son
+#regle le son
 volume = pygame.mixer.music.get_volume() 
 pygame.mixer.music.set_volume(0.5)
 #son de fond
-pygame.mixer.music.load("../sound/loop.wav")
+pygame.mixer.music.load("sound/loop.wav")
 
 #Chargement et collage du boitier/fond
-fond = pygame.image.load("../img/fond.png").convert_alpha()
-fondE = pygame.image.load("../img/fondE.png").convert_alpha()
-fondW = pygame.image.load("../img/fondW.png").convert_alpha()
-boitier = pygame.image.load("../img/controlCenter.png").convert_alpha()
+fond = pygame.image.load("img/fond.png").convert_alpha()
+fondE = pygame.image.load("img/fondE.png").convert_alpha()
+fondW = pygame.image.load("img/fondW.png").convert_alpha()
+boitier = pygame.image.load("img/controlCenter.png").convert_alpha()
 
 #Chargement et collage des inputs du boitier
 switch1 = switch()
-switch1.etatON = pygame.image.load("../img/switch1ON.png").convert_alpha()
-switch1.etatOFF = pygame.image.load("../img/switch1OFF.png").convert_alpha()
-switch1.img = pygame.image.load("../img/switch1OFF.png").convert_alpha()
+switch1.etatON = pygame.image.load("img/switch1ON.png").convert_alpha()
+switch1.etatOFF = pygame.image.load("img/switch1OFF.png").convert_alpha()
+switch1.img = pygame.image.load("img/switch1OFF.png").convert_alpha()
 switch2 = switch()
-switch2.etatON = pygame.image.load("../img/switch2ON.png").convert_alpha()
-switch2.etatOFF = pygame.image.load("../img/switch2OFF.png").convert_alpha()
-switch2.img = pygame.image.load("../img/switch2OFF.png").convert_alpha()
+switch2.etatON = pygame.image.load("img/switch2ON.png").convert_alpha()
+switch2.etatOFF = pygame.image.load("img/switch2OFF.png").convert_alpha()
+switch2.img = pygame.image.load("img/switch2OFF.png").convert_alpha()
 switch3 = switch()
-switch3.etatON = pygame.image.load("../img/switch3ON.png").convert_alpha()
-switch3.etatOFF = pygame.image.load("../img/switch3OFF.png").convert_alpha()
-switch3.img = pygame.image.load("../img/switch3OFF.png").convert_alpha()
+switch3.etatON = pygame.image.load("img/switch3ON.png").convert_alpha()
+switch3.etatOFF = pygame.image.load("img/switch3OFF.png").convert_alpha()
+switch3.img = pygame.image.load("img/switch3OFF.png").convert_alpha()
 switch4 = switch()
-switch4.etatON = pygame.image.load("../img/switch4ON.png").convert_alpha()
-switch4.etatOFF = pygame.image.load("../img/switch4OFF.png").convert_alpha()
-switch4.img = pygame.image.load("../img/switch4OFF.png").convert_alpha()
-curseurM = pygame.image.load("../img/curseurMoney.png").convert_alpha()
-jaugeB = pygame.image.load("../img/jaugeB.png").convert_alpha()
-jaugeJ = pygame.image.load("../img/jaugeJ.png").convert_alpha()
-jaugeR = pygame.image.load("../img/jaugeR.png").convert_alpha()
-alimOn = pygame.image.load("../img/alimon.png").convert_alpha()
+switch4.etatON = pygame.image.load("img/switch4ON.png").convert_alpha()
+switch4.etatOFF = pygame.image.load("img/switch4OFF.png").convert_alpha()
+switch4.img = pygame.image.load("img/switch4OFF.png").convert_alpha()
+curseurM = pygame.image.load("img/curseurMoney.png").convert_alpha()
+jaugeB = pygame.image.load("img/jaugeB.png").convert_alpha()
+jaugeJ = pygame.image.load("img/jaugeJ.png").convert_alpha()
+jaugeR = pygame.image.load("img/jaugeR.png").convert_alpha()
+alimOn = pygame.image.load("img/alimon.png").convert_alpha()
 sSoins = slides()
 sRichesse = slides()
 sTest = slides()
-slides.slide = pygame.image.load("../img/slide.png").convert_alpha()
-slides.slider = pygame.image.load("../img/slider.png").convert_alpha()
-alimOff = pygame.image.load("../img/alimoff.png").convert_alpha()
+slides.slide = pygame.image.load("img/slide.png").convert_alpha()
+slides.slider = pygame.image.load("img/slider.png").convert_alpha()
+alimOff = pygame.image.load("img/alimoff.png").convert_alpha()
         
 
 
 #creation planete/ville
-world = pygame.image.load("../img/world.png").convert_alpha()
-city1 = pygame.image.load("../img/city/city_1.png").convert_alpha() #imgtaille: 390*390
-city2 = pygame.image.load("../img/city/city_2.png").convert_alpha() 
-city3 = pygame.image.load("../img/city/city_3.png").convert_alpha()
-city4 = pygame.image.load("../img/city/city_4.png").convert_alpha()
-testR = pygame.image.load("../img/testRotate.png").convert_alpha()
+world = pygame.image.load("img/world.png").convert_alpha()
+city1 = pygame.image.load("img/city/city_1.png").convert_alpha() #imgtaille: 390*390
+city2 = pygame.image.load("img/city/city_2.png").convert_alpha() 
+city3 = pygame.image.load("img/city/city_3.png").convert_alpha()
+city4 = pygame.image.load("img/city/city_4.png").convert_alpha()
+testR = pygame.image.load("img/testRotate.png").convert_alpha()
 
 #creation objets villes
 ville1 = villes()
@@ -89,7 +94,7 @@ ville6 = villes()
 rptRich = repartitionRichesse()
 ville1.repartition, ville2.repartition, ville3.repartition, ville4.repartition, ville5.repartition, ville6.repartition, = rptRich.initEtat()
 
-#Rafraîchissement de l'écran
+#Rafraichissement de l'ecran
 
 pygame.display.flip()
 
@@ -124,27 +129,27 @@ while continuer:
         #curseur richesse
         if event.type == MOUSEBUTTONUP and event.button == 1 and event.pos[0] > 497 and event.pos[1] > 202 and event.pos[0] < 590 and event.pos[1] < 275:
             mousemove = 1
-            print("repartition de la richesse")
+            #print("repartition de la richesse")
             ville1.repartition, ville2.repartition, ville3.repartition, ville4.repartition, ville5.repartition, ville6.repartition, = rptRich.click()
         #switch1 nuke
         if event.type == MOUSEBUTTONUP and event.button == 1 and event.pos[0] > 598 and event.pos[1] > 200 and event.pos[0] < 638 and event.pos[1] < 280:
             mousemove = 1
-            print("switch1")
+            #print("switch1")
             switch1.click()
         #switch2
         if event.type == MOUSEBUTTONUP and event.button == 1 and event.pos[0] > 650 and event.pos[1] > 200 and event.pos[0] < 692 and event.pos[1] < 280:
             mousemove = 1
-            print("switch2")
+            #print("switch2")
             switch2.click()
         #switch3
         if event.type == MOUSEBUTTONUP and event.button == 1 and event.pos[0] > 704 and event.pos[1] > 200 and event.pos[0] < 744 and event.pos[1] < 280:
             mousemove = 1
-            print("switch3")
+            #print("switch3")
             switch3.click()
         #switch4
         if event.type == MOUSEBUTTONUP and event.button == 1 and event.pos[0] > 757 and event.pos[1] > 200 and event.pos[0] < 797 and event.pos[1] < 280:
             mousemove = 1
-            print("switch4")
+            #print("switch4")
             switch4.click()
         #slide soins
         if event.type == MOUSEBUTTONDOWN and event.pos[0] > 602 and event.pos[1] > 103 and event.pos[0] < 797 and event.pos[1] < 114:
@@ -172,7 +177,7 @@ while continuer:
         # add habitants
         if time == vitCycle:
             print()
-            print("cycle", cycle)
+            #print("cycle", cycle)
             time = 0
             cycle += 1
         
@@ -206,7 +211,7 @@ while continuer:
             ville6.addDev()
             #ville6.info()
 
-            ville1.infoW()
+            #ville1.infoW()
         
             # resolution crise
             villes.rad += switch1.nuke() #effets switch 1, rad+dev
@@ -214,7 +219,7 @@ while continuer:
             
             # add dvlp
     
-        ## visuel départ
+        ## visuel depart
         # visu map
         fenetre.blit(fond, (0,0))
         fenetre.blit(world, (140,140)) #imgtaille: 100*100
@@ -311,6 +316,6 @@ while continuer:
         
 
     
-    # Rafraîchissement de l'écran
+    # Rafraichissement de l'ecran
     pygame.display.flip()
     

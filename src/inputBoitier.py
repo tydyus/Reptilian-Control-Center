@@ -1,6 +1,6 @@
 import pygame
-
 from pygame.locals import *
+
 from ville import *
 
 class repartitionRichesse:
@@ -80,10 +80,10 @@ class switch:
     def __init__(self):
 
         self.etat = 0
-        self.img = pygame.image.load("../img/switch1OFF.png").convert_alpha()
-        self.etatON = pygame.image.load("../img/switch1ON.png").convert_alpha()
-        self.etatOFF = pygame.image.load("../img/switch1OFF.png").convert_alpha()
-        self.son = pygame.mixer.Sound("../sound/switch.wav")
+        self.img = pygame.image.load("img/switch1OFF.png").convert_alpha()
+        self.etatON = pygame.image.load("img/switch1ON.png").convert_alpha()
+        self.etatOFF = pygame.image.load("img/switch1OFF.png").convert_alpha()
+        self.son = pygame.mixer.Sound("sound/switch.wav")
         
     def click(self):
 
@@ -91,11 +91,11 @@ class switch:
         if self.etat == 0:
             self.etat = 1
             self.img = self.etatON
-            print("on")
+            #print("on")
         else:
             self.etat = 0
             self.img = self.etatOFF
-            print("off")
+            #print("off")
 
     def nuke(self):
         rad = 0 

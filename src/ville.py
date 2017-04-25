@@ -1,6 +1,6 @@
 import pygame
-
 from pygame.locals import *
+
 from inputBoitier import *
 
 class villes:
@@ -22,7 +22,7 @@ class villes:
         self.valeurDvlp = 100
         self.repartition = 4 # sur 24, valeur de base: 4/24
         self.pop = 0
-        self.city = pygame.image.load("../img/city/city_0.png").convert_alpha()
+        self.city = pygame.image.load("img/city/city_0.png").convert_alpha()
 
     def info(self):
         print("__info-ville__")
@@ -81,29 +81,29 @@ class villes:
         villes.pol += (self.dvlp/10)/((100-(villes.resPol))/100)
         villes.dvlp += self.dvlp
 
-        # changement etat de la cité
+        # changement etat de la cite
         if self.dvlp <= 10:
-            self.city = pygame.image.load("../img/city/city_0.png").convert_alpha()
+            self.city = pygame.image.load("img/city/city_0.png").convert_alpha()
         if self.dvlp > 10:
-            self.city = pygame.image.load("../img/city/city_1.png").convert_alpha()
+            self.city = pygame.image.load("img/city/city_1.png").convert_alpha()
         if self.dvlp > 30:
-            self.city = pygame.image.load("../img/city/city_2.png").convert_alpha()
+            self.city = pygame.image.load("img/city/city_2.png").convert_alpha()
         if self.dvlp > 70:
-            self.city = pygame.image.load("../img/city/city_3.png").convert_alpha()
+            self.city = pygame.image.load("img/city/city_3.png").convert_alpha()
         if self.dvlp > 150:
-            self.city = pygame.image.load("../img/city/city_4.png").convert_alpha()
+            self.city = pygame.image.load("img/city/city_4.png").convert_alpha()
         if self.dvlp > 225:
-            self.city = pygame.image.load("../img/city/city_5.png").convert_alpha()
+            self.city = pygame.image.load("img/city/city_5.png").convert_alpha()
         if self.dvlp > 350:
-            self.city = pygame.image.load("../img/city/city_6.png").convert_alpha()
+            self.city = pygame.image.load("img/city/city_6.png").convert_alpha()
         if self.dvlp > 500:
-            self.city = pygame.image.load("../img/city/city_7.png").convert_alpha()
+            self.city = pygame.image.load("img/city/city_7.png").convert_alpha()
         if self.dvlp > 700:
-            self.city = pygame.image.load("../img/city/city_8.png").convert_alpha()
+            self.city = pygame.image.load("img/city/city_8.png").convert_alpha()
         if self.dvlp > 1000:
-            self.city = pygame.image.load("../img/city/city_9.png").convert_alpha()
+            self.city = pygame.image.load("img/city/city_9.png").convert_alpha()
         if self.dvlp > 1400:
-            self.city = pygame.image.load("../img/city/city_10.png").convert_alpha()
+            self.city = pygame.image.load("img/city/city_10.png").convert_alpha()
         # remise a zero pour le nouveau  cycle
         self.valeurDvlp = 100
 
